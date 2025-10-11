@@ -1,6 +1,6 @@
 This document illustrates how to create and run Docker images to build databases(clickhouse, duckdb, mariadb, monetdb, mysql, postgres, sqlite, tidb)  for QTRAN. Follow these steps to replicate the environment.
 ## Docker
-Ensure you have the latest version of Docker installed.
+**Ensure you have the latest version of `Docker Engine` and `Docker Compose` installed.**
 ## Step 1: Create and Run Docker Images
 
 1. Navigate to the QTRAN Director
@@ -16,7 +16,7 @@ Ensure you have the latest version of Docker installed.
     In `QTRAN` directory, build the image using the Dockerfile:
     
     ```shell
-    docker-compose up --build -d
+    docker compose up -d
     ```
 
 ## Step 2: Run Docker Images
@@ -24,7 +24,7 @@ Ensure you have the latest version of Docker installed.
 Start container instancs with the following command:
 
 ```shell
-docker-compose up -d
+docker compose up -d
 ```
 
 ## Step 3: Database 
@@ -99,7 +99,7 @@ Modify the administrator account password:
 ALTER USER admin IDENTIFIED WITH plaintext_password BY '123456';
 ```
 
-### DuckDB
+### DuckDB(Embedded Database)
 
 The official DuckDB does not maintain its image, so we cannot use a Docker container to build it. For DuckDB, it uses a file path (like `<host_file_path>/db_name.duckdb`) to access the database, rather than the typical "host/database" format.
 
@@ -135,7 +135,7 @@ ALTER USER SET PASSWORD '123456' USING OLD PASSWORD 'monetdb';
 
 ### PostgreSQL
 
-### SQLite
+### SQLite(Embedded Database)
 The database **sqlite** doesn't requiring building.Because almost all versions of Linux operating systems come with SQLite pre-installed, we can directly use the system's built-in version without additional building. Note the following points:
 
 1. **Switching Databases**: SQLite does not require the `USE` statement. You can directly specify the database file path.
@@ -291,6 +291,6 @@ mysql -h172.24.89.100 -P 4000 -u root -p
 
 
 ## Others
-- **Stop all containers**: `docker-compose down`
-- **View container status**: `docker-compose ps`
-- **View container logs**: `docker-compose logs`
+- **Stop all containers**: `docker compose down`
+- **View container status**: `docker compose ps`
+- **View container logs**: `docker compose logs`
