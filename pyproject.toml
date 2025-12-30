@@ -1,0 +1,11 @@
+[project]
+name = "Reproduce-QTRAN"
+version = "0.0.1"
+description = "Reproduce QTRAN."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.4.0",
+    "pip>=25.3",
+    "torch==2.4.1",
+]
